@@ -1,0 +1,95 @@
+﻿<Window x:Class="PasswordGenerator3.View.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PasswordGenerator3.View.Windows"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <!--#region Настройки генерации-->
+
+        <GroupBox Header="Настройки пароля" BorderBrush="Black">
+
+            <Grid ShowGridLines="True">
+
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="0.5*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid ShowGridLines="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="10" />
+
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Длина пароля"/>
+                        <Separator Width="10" Height="0"/>
+                        <Slider Name="PasswordLenghtSL" Minimum="3" Maximum="32" Width="100" />
+                        <Separator Width="10" Height="0"/>
+                        <TextBox Width="30"  Name="PassworLenghtTB"  Text="{Binding ElementName=PasswordLenghtSL, Path=Value, StringFormat={}{0:F0}}"/>
+                    </StackPanel>
+
+                    <CheckBox Grid.Row="2" Content="Цифры" Name="NumbersCb"/>
+                    <CheckBox Grid.Row="4" Content="Символы" Name="SymbolCb"/>
+                    <CheckBox Grid.Row="6" Content="Верхний регистр" Name="UpperCb"/>
+                    <CheckBox Grid.Row="8" Content="Нижний регистр" Name="LowerCb"/>
+                    <CheckBox Grid.Row="10" Content="Слова" Name="WordsCb"/>
+                    <StackPanel Grid.Row="12" Orientation="Horizontal" >
+                        <TextBlock Text="Количество паролей"/>
+                        <Separator Height="0" Width="10"/>
+                        <TextBox Name="passwordsCountTB" Width="30"/>
+                    </StackPanel>
+
+                </Grid>
+
+                <Grid Grid.Column="2" ShowGridLines="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    
+                    <Image Source="/Resourse/Image/question.png" />
+                    
+ <TextBlock Name="GuardPasswordTB" Grid.Row="2"    Text="Надежный"/>
+ <Button x:Name="GenerateBtn"  Grid.Row="4"    Content="Генерация" Click="GenerateBtn_Click"/>
+                </Grid>
+
+            </Grid>
+
+        </GroupBox>
+
+        <!--#endregion-->
+
+        <!--#region Список паролей -->
+        <ListBox Name="PasswordsLb" Grid.Row="2">
+        </ListBox>
+        <!--#endregion-->
+    </Grid>
+</Window>
